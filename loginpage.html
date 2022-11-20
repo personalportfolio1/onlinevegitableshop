@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            height:100vh;
+            width:100%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container form{
+            width:100%;
+            max-width:500px;
+            padding:20px;
+            border:2px solid gray;
+            background-color: ghostwhite;
+        }
+        .heading{
+            font-size:30px;
+            text-align:center;
+           border-bottom:2px solid black;
+        }
+        .inputbox{
+            margin-bottom:20px;
+        }
+        .inputbox input{
+            width:100%;
+            height:40px;
+        }
+        .inputbox label{
+            font-size: 20px;
+        }
+        .submit button{
+            width:100%;
+            height:40px; 
+            margin-top:10px;
+            font-size:20px;
+            color:black;
+            cursor:pointer;
+        }
+        .submit button:hover{
+            color:blue;
+        }
+        .forgotpass{
+            text-align: right;
+            font-size: 20px;
+                } 
+                .forgotpass a{
+                    text-decoration: none;
+                }       
+                .not-register a{
+                     color:red;
+                     font-size: 20px;
+                }
+        @media screen and (max-width:700px)
+        {
+            .container form{
+                min-width:100px;
+            }  
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="index.html">
+            <h3 class="heading">Login</h3>
+            <div class="inputbox">
+                <label>Email:</label>
+                <input type="text" id="email">
+            </div>
+            <div>
+                <span class="email-err-msg" id="email-msg" style="color:red; font-size:20px;"></span>
+            </div>
+            <div class="inputbox">
+                <label>Password:</label>
+                <input type="text" id="password">
+            </div>
+            <div>
+                <span id="pass-err-msg" style="color:red;font-size:20px;"></span>
+            </div>
+            <div class="submit">
+                <button onclick="return login()">Submit</button>
+            </div>
+            <div class="forgotpass">
+                <p>forgot  <a href="">password ?</a></p>
+            </div>
+            <div class="not-register">
+                <a href="responsiveform.html">If not register? Click here to register</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function login() {
+            var emailvalue = document.getElementById('email').value;
+            var passvalue = document.getElementById('password').value;
+            if (emailvalue == '') {
+                document.getElementById("email-msg").innerHTML = "* Please enter Email";
+                return false;
+            }
+         if (emailvalue.indexOf('@') <= 0) {
+                document.getElementById("email-msg").innerHTML = "* Please enter  valid email";
+                return false;
+            }
+          if (emailvalue.charAt(emailvalue.length - 4) != '.' && (emailvalue.charAt(emailvalue.length - 3)) != '.') {
+                document.getElementById("email-msg").innerHTML = "* Please enter the valid emailId";
+                return false;
+            }
+
+            var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]){8,15}/;
+            if (!passvalue.match(pattern)) {
+                document.getElementById("pass-err-msg").innerHTML = "* Please enter the valid password";
+                return false;
+            }
+            // return true;
+            alert("Login Successfully!");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+#payment{
+    float:right;
+    position:absolute;
+    top:30px;
+    right:30px;
+}
+.button-container{
+    display:flex;
+    align-items: center;
+}
+.button-container .form-control{
+    max-width:80px;
+    text-align:center;
+    margin:0px 5px;
+    display:inline-block;
+}
+.button-container button{
+    border:1px solid gray;
+    height:35px;
+    width:35px;
+    font-size:20px;
+}
+#mytable .form-control{
+    max-width:80px;
+    text-align: center;
+}
+
+#mytable img{
+    width:200px;
+    height:150px;
+}
+
+@media screen and (max-width:600px)
+{
+    table{
+    min-width:300px;
+}
+#mytable img{
+    width:80px;
+    height:80px;
+}
+
+}

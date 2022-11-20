@@ -1,0 +1,90 @@
+@media screen and (max-width:700px)
+{
+    header .navbar .navbar-toggler,
+    header .navbar .navbar-toggler:focus{
+        border:0;
+        outline:unset;
+        box-shadow: none;
+        }
+        header .navbar-nav .nav-item .nav-link{
+            text-align:center;
+        }
+        /* slider */
+        .col img{
+            height:200px;
+        }
+        .offer img{
+            width:100%;
+            height:100px;
+            cursor:pointer;
+        }
+        #gallery-heading{
+            font-size:18px;
+        }
+        .imagewrapper .image{
+            width:100%;
+            padding-left:30px;
+            padding-right:30px;
+            margin:20px;
+           
+        }
+         .imagewrapper .image img{
+            width:100%;
+            height:160px;
+        } 
+        #login form{
+            min-width:100px;
+            text-align: center;;
+        }
+        .contactform form{
+            min-width:200px;
+            width:80%;
+        }
+        .contact-heading{
+            font-size:18px;
+        }
+        .contactform  .contact-wrapper{
+            margin-bottom:10px;
+        }
+        #register .group{
+            display:flex;
+            justify-content: space-between;
+            flex-wrap:wrap;
+        } 
+        .contactusform .contactwrapper .wrap{
+            display:flex;
+            justify-content: space-between;
+            flex-wrap:wrap;
+        }
+        .contactusform .contactwrapper form .input-box{
+            width:100%;
+            margin-bottom:10px;
+        }
+        #signup #register .wrapper{
+            width:100%;
+        }
+        #gallery .row .image img{
+            width:100%;
+            margin:10px;
+        }
+        .imagewrapper .image{
+            margin-bottom:20px;
+            width:100%;
+        }   
+        .imagewrapper .image img{
+            width:100%;
+        }
+        .imagewrapper{
+            width:100%;
+            min-width:300px;
+        }
+    }
+@media screen and (max-width:1000px)
+{
+    header .navbar .navbar-toggler,
+    header .navbar .navbar-toggler:focus{
+        border:0;
+        outline:unset;
+        box-shadow: none;
+        }
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container form {
+            background: linear-gradient(135deg, red, black);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 2px 2px 2px black;
+        }
+
+        .container form .heading {
+            color: white;
+            font-size: 30px;
+            border-bottom: 2px solid white;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .container form .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .container form .input-box {
+           margin-bottom:20px;
+            width: calc(100% 2 - 10px);
+        }
+
+        .container form .input-box label {
+            display: block;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .container form .input-box input {
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+            font-size: 18px;
+            /* outline:none; */
+            border: 0px;
+        }
+
+        .container form .genderbox {
+            color: white;
+            font-size: 18px;
+        }
+
+        .container form .genderbox label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .container form .genderbox input {
+            margin: 10px;
+        }
+
+        .submitbutton button {
+            width: 100%;
+            height: 40px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 20px;
+            color: white;
+            border: 2px solid rgb(177, 170, 170);
+            cursor: pointer;
+            background: linear-gradient(135deg, black, red);
+
+        }
+
+        .submitbutton button:hover {
+            background: linear-gradient(135deg, red, black);
+            color: white
+        }
+.alreay-register a{
+    color:white;
+    font-size:20px;
+}
+.alreay-register{
+    margin-top:20px;
+}
+        @media screen and (max-width:700px) {
+
+            /* to do a full length of input box */
+            .container form .input-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .container form .input-box input {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form name="myform">
+            <div class="heading">Registration</div>
+            <div class="wrapper">
+                <div class="input-box">
+                    <label for="name">Enter Name:</label>
+                    <input type="text" placeholder="Enter Name:" id="name">
+                    <div id="name-err-msg" style="color:white;font-size:20px;padding-top:10px;"></div>
+                </div>
+                <div class="input-box">
+                    <label for="contact">Contact No.:</label>
+                    <input type="text" placeholder="Contact No:" id="contact">
+                    <div id="contact-err-msg" style="color:white;font-size:20px;padding-top:10px;"></div>
+                </div>
+                <div class="input-box">
+                    <label for="email">Email:</label>
+                    <input type="text" placeholder=" Email:" id="email">
+                    <div id="email-err-msg" style="color:white;font-size:20px;padding-top:10px;"></div>
+                </div>
+                <div class="input-box">
+                    <label for="password">Password:</label>
+                    <input type="text" placeholder="Password:" id="password">
+                    <div id="pass-err-msg" style="color:white;font-size:20px;padding-top:10px;"></div>
+                </div>
+            </div>
+            <div class="genderbox">
+                <label>Gender:</label>
+                <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female">Female
+                <input type="radio" name="gender" value="other">Other
+                <div id="gender-err-msg" style="color:white;font-size:20px;padding-top:10px;"></div>
+            </div>
+            <div class="submitbutton">
+                <button onclick=" return register()">Submit</button>
+            </div>
+<div class="alreay-register">
+   <a href="loginpage.html">If Already registered ? Please Click here to login.</a>
+</div>  
+   </form>
+    </div>
+    <script>
+        function register() {
+            var name = document.getElementById("name").value;
+            var contact = document.getElementById("contact").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+var gender=document.myform.gender.value;
+            var pattern1 = /^[a-zA-Z]{2}/;
+            var pattern2 = /^[0-9]{10}/;
+            var passpattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]){8}/;
+            if (!name.match(pattern1))
+             {
+                document.getElementById("name-err-msg").innerHTML = "* Please enter a valid Name.";
+                return false;
+            }
+            if (!contact.match(pattern2)) 
+            {
+                document.getElementById("contact-err-msg").innerHTML = "* Please enter a valid Mobile No.";
+                return false;
+            }
+            if (email.indexOf('@') <= 0)
+             {
+                document.getElementById("email-err-msg").innerHTML = "* Please enter a valid Email";
+                return false;
+            }
+            if (email.charAt(email.length - 4) != '.' && email.charAt(email.length - 3) != '.')
+             {
+                document.getElementById("email-err-msg").innerHTML = "* Please enter a valid Email";
+                return false;
+            }
+            if (password == '') 
+            {
+                document.getElementById("pass-err-msg").innerHTML = "* Please enter a Password!";
+                return false;
+            }
+            if (!password.match(passpattern)) {
+                document.getElementById("pass-err-msg").innerHTML = "* Password should contain one small letter,one capital letter ,one special character or one numeric value";
+                return false;
+            }
+            if(gender=='')
+            {
+                document.getElementById("gender-err-msg").innerHTML = "* Please select the gender";
+                return false;
+            }
+            // return true;
+            alert("Form submitted Successfully!");
+       }
+    </script>
+</body>
+
+</html>

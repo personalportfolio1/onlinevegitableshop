@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            /* background-image:url('images/slider.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center; */
+        }
+
+        form {
+            width: 90%;
+            max-width: 700px;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+            position: relative;
+            color: blue;
+            font-size: 20px;
+        }
+
+        input,
+        textarea,
+        button {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            font-size: 20px;
+            color: blue;
+            border: 1px solid black;
+            /* background: transparent; */
+        }
+
+        button {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+        }
+
+        input:focus~label,
+        input:valid~label {
+            top: -30px;
+        }
+
+        textarea:focus~label,
+        textarea:valid~label {
+            top: -30px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .row .input-group {
+            flex-basis: 48%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <form>
+            <div class="row">
+                <div class="input-group">
+                    <input type="text" name="name" id="name">
+                    <label for="name">Enter Name:</label>
+                    <div id="name-err-msg" style="color:red;font-size:20px;"></div>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="contact" id="contact">
+                    <label for="contact">Contact No.</label>
+                    <div id="contact-err-msg" style="color:red;font-size:20px;"></div>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" id="email">
+                <label for="email">Email:</label>
+                <div id="email-err-msg" style="color:red;font-size:20px;"></div>
+            </div>
+            <div class="input-group">
+                <textarea name="message" id="message" rows="6"></textarea>
+                <label for="message">Message:</label>
+                <div id="msg-err-msg" style="color:red;font-size:20px;"></div>
+            </div>
+            <div class="input-group">
+                <button onclick="return hello()">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function hello() 
+        {
+            var name = document.getElementById("name").value;
+            var contact = document.getElementById("contact").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            var pattern1 = /^[a-zA-Z]{2}/;
+            var pattern2 = /^[0-9]{10}/;
+            var passpattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]){8}/;
+            if (!name.match(pattern1)) {
+                document.getElementById("name-err-msg").innerHTML = "* Please enter a valid Name.";
+                return false;
+            }
+            if (!contact.match(pattern2)) {
+                document.getElementById("contact-err-msg").innerHTML = "* Please enter a valid Mobile No.";
+                return false;
+            }
+            if (email.indexOf('@') <= 0) {
+                document.getElementById("email-err-msg").innerHTML = "* Please enter a valid Email";
+                return false;
+            }
+            if (email.charAt(email.length - 4) != '.' && email.charAt(email.length - 3) != '.')
+             {
+                document.getElementById("email-err-msg").innerHTML = "* Please enter a valid Email";
+                return false;
+            }
+            
+            if (message == '') {
+                document.getElementById("msg-err-msg").innerHTML = "* Please enter a message!";
+                return false;
+            }
+            // return true;
+            alert("Form submitted Successfully!");
+        }
+    </script>
+</body>
+
+</html>
